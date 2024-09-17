@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Overlay with Background</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&display=swap" rel="stylesheet">
+    <style type="text/css">
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+            font-family: "Inter", sans-serif;
+            overflow: hidden;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('media/fotonya.png'); /* Updated background image URL */
+            background-size: cover;
+            background-position: center;
+            z-index: 10;
+        }
+
+        .overlay-body {
+            text-align: center;
+            color: white; /* Changed text color to white */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        p.overlay-title {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 16px;
+        }
+
+        p.overlay-description {
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+
+        .bold-text {
+            font-weight: bold; /* Make specific text bold */
+        }
+
+        .overlay-button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 5px;
+        }
+
+        #accept-button {
+            background-color: rgb(132, 94, 194);
+            color: white;
+        }
+
+        #decline-button {
+            background-color: rgb(255, 94, 94);
+            color: white;
+        }
+
+        a.overlay-link {
+            display: block;
+            margin-top: 16px;
+            font-size: 16px;
+            color: rgb(132, 94, 194);
+            text-decoration: none;
+        }
+
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 5;
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <!-- Overlay with background image -->
+    <div id="overlay" class="overlay">
+        <div class="overlay-body">
+            <p class="overlay-title">penghiatan, adalah alasan aku menjadi lebih kuat.</p>
+            <p class="overlay-description bold-text">Pengkhianatanmu mengajarkan pelajaran yang pahit, bahwa tidak semua yang tersenyum di hadapan kita tulus di belakang. Tapi dari luka ini, aku belajar untuk lebih kuat dan bijak dalam memilih siapa yang layak untuk dipercaya.</p>
+            <button id="accept-button" class="overlay-button">mode sad</button>
+            <button id="decline-button" class="overlay-button">mode badut</button>
+            <a href="https://chat.whatsapp.com/Lo1cbvoqjzjKFfhKjgJstv" target="_blank" class="overlay-link">aku? Bluetooth? tidak akan!</a>
+        </div>
+    </div>
+
+    <!-- Video that will show when the overlay is closed -->
+    <video id="video" src="media/video.mp4" loop></video>
+
+    <script type="text/javascript">
+        const video = document.getElementById("video");
+        const overlay = document.getElementById("overlay");
+        const acceptButton = document.getElementById("accept-button");
+        const declineButton = document.getElementById("decline-button");
+
+        function playVideo() {
+            overlay.style.display = 'none';  // Hide the overlay
+            video.style.display = 'block';   // Show the video
+            video.play();                    // Play the video
+        }
+
+        // When buttons are clicked, hide the overlay and show the video
+        acceptButton.addEventListener('click', playVideo);
+        declineButton.addEventListener('click', playVideo);
+    </script>
+</body>
+</html>
